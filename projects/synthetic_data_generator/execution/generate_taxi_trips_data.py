@@ -1,12 +1,10 @@
-import os
+
 from datetime import date, datetime, timedelta
 import random
 import pandas as pd
 import numpy as np
-from time import time
-from projects.synthetic_data_generator.conf.proj_conf import get_output_path
-
-
+from projects.synthetic_data_generator.conf.proj_conf import timer
+from projects.synthetic_data_generator.conf.output_file import out_file
 
 """
 Constants:
@@ -15,38 +13,6 @@ Constants:
     complete_name (str): Full file path for the output CSV file
 """
 suburbs = ['Lenox Hill West', 'Upper West Side South', 'Alphabet City', 'Hudson Sq', 'Midtown East', 'Times Sq/Theatre District', 'Battery Park City', 'Murray Hill', 'East Harlem South', 'Lincoln Square East', 'LaGuardia Airport', 'Lincoln Square West', 'Financial District North', 'Upper West Side North', 'East Chelsea', 'Midtown Center', 'Gramercy', 'Penn Station/Madison Sq West', 'Sutton Place/Turtle Bay North', 'West Chelsea/Hudson Yards', 'Clinton East', 'Clinton West', 'UN/Turtle Bay South', 'Midtown South', 'Midtown North', 'Garment District', 'Lenox Hill East', 'Flatiron', 'TriBeCa/Civic Center', 'Upper East Side North', 'West Village', 'Greenwich Village South', 'JFK Airport', 'East Village', 'Union Sq', 'Yorkville West', 'Central Park', 'Meatpacking/West Village West', 'Kips Bay', 'Morningside Heights', 'Astoria', 'East Tremont', 'Upper East Side South', 'Financial District South', 'Bloomingdale', 'Queensboro Hill', 'SoHo', 'Brooklyn Heights', 'Yorkville East', 'Manhattan Valley', 'DUMBO/Vinegar Hill', 'Little Italy/NoLiTa', 'Mott Haven/Port Morris', 'Greenwich Village North', 'Stuyvesant Heights', 'Lower East Side', 'East Harlem North', 'Chinatown', 'Fort Greene', 'Steinway', 'Central Harlem', 'Crown Heights North', 'Seaport', 'Two Bridges/Seward Park', 'Boerum Hill', 'Williamsburg (South Side)', 'Rosedale', 'Flushing', 'Old Astoria', 'Soundview/Castle Hill', 'Stuy Town/Peter Cooper Village', 'World Trade Center', 'Sunnyside', 'Washington Heights South', 'Prospect Heights', 'East New York', 'Hamilton Heights', 'Cobble Hill', 'Long Island City/Queens Plaza', 'Central Harlem North', 'Manhattanville', 'East Flatbush/Farragut', 'Elmhurst', 'East Concourse/Concourse Village', 'Park Slope', 'Greenpoint', 'Williamsburg (North Side)', 'Long Island City/Hunters Point', 'South Ozone Park', 'Ridgewood', 'Downtown Brooklyn/MetroTech', 'Queensbridge/Ravenswood', 'Williamsbridge/Olinville', 'Bedford', 'Gowanus', 'Jackson Heights', 'South Jamaica', 'Bushwick North', 'West Concourse', 'Queens Village', 'Windsor Terrace', 'Flatlands', 'Van Cortlandt Village', 'Woodside', 'East Williamsburg', 'Fordham South', 'East Elmhurst', 'Kew Gardens', 'Flushing Meadows-Corona Park', 'Marine Park/Mill Basin', 'Carroll Gardens', 'Canarsie', 'East Flatbush/Remsen Village', 'Jamaica', 'Marble Hill', 'Bushwick South', 'Erasmus', 'Claremont/Bathgate', 'Pelham Bay', 'Soundview/Bruckner', 'South Williamsburg', 'Battery Park', 'Forest Hills', 'Maspeth', 'Bronx Park', 'Starrett City', 'Brighton Beach', 'Brownsville', 'Highbridge Park', 'Bensonhurst East', 'Mount Hope', 'Prospect-Lefferts Gardens', 'Bayside', 'Douglaston', 'Midwood', 'North Corona', 'Homecrest', 'Westchester Village/Unionport', 'University Heights/Morris Heights', 'Inwood', 'Washington Heights North', 'Flatbush/Ditmas Park', 'Rego Park', 'Riverdale/North Riverdale/Fieldston', 'Jamaica Estates', 'Borough Park', 'Sunset Park West', 'Belmont', 'Auburndale', 'Schuylerville/Edgewater Park', 'Co-Op City', 'Crown Heights South', 'Spuyten Duyvil/Kingsbridge', 'Morrisania/Melrose', 'Hollis', 'Parkchester', 'Coney Island', 'East Flushing', 'Richmond Hill', 'Bedford Park', 'Highbridge', 'Clinton Hill', 'Sheepshead Bay', 'Madison', 'Dyker Heights', 'Cambria Heights', 'Pelham Parkway', 'Hunts Point', 'Melrose South', 'Springfield Gardens North', 'Bay Ridge', 'Elmhurst/Maspeth', 'Crotona Park East', 'Bronxdale', 'Briarwood/Jamaica Hills', 'Van Nest/Morris Park', 'Murray Hill-Queens', 'Kingsbridge Heights', 'Whitestone', 'Saint Albans', 'Allerton/Pelham Gardens', 'Howard Beach', 'Norwood', 'Bensonhurst West', 'Columbia Street', 'Middle Village', 'Prospect Park', 'Ozone Park', 'Gravesend', 'Glendale', 'Kew Gardens Hills', 'Woodlawn/Wakefield', 'West Farms/Bronx River', 'Hillcrest/Pomonok']
-output_filename = 'taxi_trip_data.csv'
-complete_name = os.path.join(get_output_path(), output_filename)
-
-def timer(func):
-    """
-    Decorator that measures and tracks the execution time of a function.
-    Records the execution time of the decorated function and maintains a running
-    total of all execution times. Prints both the individual execution time and
-    the cumulative total after each function call.
-    Args:
-        func: The function to be decorated and timed.
-    Returns:
-        wrapper: The wrapped function that tracks execution time.
-    Example:
-        @timer
-        def my_function():
-            pass
-        my_function()  # Prints: Execution time: 0.001   Total: 0.001
-        my_function()  # Prints: Execution time: 0.002   Total: 0.003
-    """
-    def wrapper(*args, **kwargs):
-        nonlocal total
-        start = time()
-        result = func(*args, **kwargs)
-        duration = time() - start
-        total += duration
-        print(f"Execution time: {duration}   Total: {total}")
-        return result
-
-    total = 0
-    return wrapper
-
 
 def trip_time():
     """
@@ -63,7 +29,7 @@ def trip_time():
     return random_time
 
 @timer
-def trip_stattistics_data(size):
+def trip_statistics_data(size):
     """
     Generates a CSV file containing random taxi trip statistics data.
     
@@ -106,7 +72,7 @@ def trip_stattistics_data(size):
     df['pickup_zone'] = np.random.choice(['airport', 'business_district', 'entertainment_district', 'residential', 'train_station'], size=size)
     df['dropoff_location'] = np.random.choice(suburbs, size=size)
     df['dropoff_zone'] = np.random.choice(['airport', 'business_district', 'entertainment_district', 'residential', 'train_station'], size=size)
-    df.to_csv(complete_name, index=False)
+    df.to_csv((out_file), index=False)
+    return "Data generation complete. CSV file created at: " + out_file +" with " + str(size) + " records."
 
-
-trip_stattistics_data(10)
+print(trip_statistics_data(5))

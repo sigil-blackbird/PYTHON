@@ -1,11 +1,6 @@
 pick_up_date,pick_up_time,drop_off_time,trip_distance,trip_fare,payment_method,cab_color,pickup_location,pickup_zone,dropoff_location,dropoff_zone
-2023-05-04,00:55:07,23:14:11,35.06,99.39,cash,green,Erasmus,residential,Cobble Hill,residential
-2025-09-05,17:00:22,08:38:05,44.42,59.27,debit_card,black,Greenwich Village South,business_district,Williamsburg (North Side),entertainment_district
-2025-01-23,02:31:16,17:25:10,66.81,14.9,debit_card,green,Chinatown,business_district,East New York,business_district
-2025-07-21,05:55:19,06:30:07,65.11,14.28,debit_card,black,Starrett City,entertainment_district,Maspeth,train_station
-2024-12-06,05:11:38,18:19:55,98.8,88.53,credit_card,blue,Murray Hill,train_station,Bedford,residential
-2024-09-20,12:25:18,03:51:42,75.33,37.42,Venmo,green,Homecrest,train_station,Meatpacking/West Village West,business_district
-2023-10-31,03:17:33,04:27:30,91.92,68.5,credit_card,blue,Van Nest/Morris Park,business_district,Bronxdale,airport
-2024-09-13,09:27:21,09:30:12,71.84,81.8,Venmo,yellow,Downtown Brooklyn/MetroTech,train_station,East Tremont,airport
-2025-04-12,01:51:33,13:06:22,73.68,92.03,cash,blue,Kew Gardens Hills,entertainment_district,Morningside Heights,entertainment_district
-2025-05-10,00:15:15,08:49:19,71.71,64.66,Venmo,white,Queensboro Hill,train_station,Riverdale/North Riverdale/Fieldston,residential
+2023-05-26,17:51:17,13:10:38,40.45,59.25,credit_card,black,Midtown North,business_district,Flatiron,entertainment_district
+2023-04-27,14:41:20,23:11:15,84.66,66.36,transit_card,white,Clinton East,entertainment_district,Greenpoint,train_station
+2023-09-16,02:58:17,19:47:05,81.43,57.7,credit_card,white,Seaport,residential,West Concourse,residential
+2024-12-01,22:20:54,03:58:58,14.87,21.88,Venmo,white,Meatpacking/West Village West,entertainment_district,Soundview/Castle Hill,airport
+2025-06-13,00:38:54,18:30:03,1.57,70.25,transit_card,yellow,Belmont,entertainment_district,Woodlawn/Wakefield,business_district

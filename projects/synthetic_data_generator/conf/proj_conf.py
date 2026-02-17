@@ -1,4 +1,34 @@
 import os
+from time import time
+
+def timer(func):
+    """
+    Decorator that measures and tracks the execution time of a function.
+    Records the execution time of the decorated function and maintains a running
+    total of all execution times. Prints both the individual execution time and
+    the cumulative total after each function call.
+    Args:
+        func: The function to be decorated and timed.
+    Returns:
+        wrapper: The wrapped function that tracks execution time.
+    Example:
+        @timer
+        def my_function():
+            pass
+        my_function()  # Prints: Execution time: 0.001   Total: 0.001
+        my_function()  # Prints: Execution time: 0.002   Total: 0.003
+    """
+    def wrapper(*args, **kwargs):
+        nonlocal total
+        start = time()
+        result = func(*args, **kwargs)
+        duration = time() - start
+        total += duration
+        print(f"Execution time: {duration}   Total: {total}")
+        return result
+
+    total = 0
+    return wrapper
 
 def get_proj_home():
     """

@@ -1,6 +1,6 @@
 pick_up_date,pick_up_time,drop_off_time,trip_distance,trip_fare,payment_method,cab_color,pickup_location,pickup_zone,dropoff_location,dropoff_zone
-2023-05-26,17:51:17,13:10:38,40.45,59.25,credit_card,black,Midtown North,business_district,Flatiron,entertainment_district
-2023-04-27,14:41:20,23:11:15,84.66,66.36,transit_card,white,Clinton East,entertainment_district,Greenpoint,train_station
-2023-09-16,02:58:17,19:47:05,81.43,57.7,credit_card,white,Seaport,residential,West Concourse,residential
-2024-12-01,22:20:54,03:58:58,14.87,21.88,Venmo,white,Meatpacking/West Village West,entertainment_district,Soundview/Castle Hill,airport
-2025-06-13,00:38:54,18:30:03,1.57,70.25,transit_card,yellow,Belmont,entertainment_district,Woodlawn/Wakefield,business_district
+2025-11-20,13:55:51,18:31:19,70.89,56.25,mobile_payment,blue,Westchester Village/Unionport,residential,East Village,business_district
+2025-07-24,02:43:06,15:54:49,96.61,49.06,cash,white,Greenwich Village South,business_district,JFK Airport,business_district
+2023-06-28,20:54:43,10:23:32,13.77,31.14,debit_card,green,Schuylerville/Edgewater Park,airport,Upper West Side North,entertainment_district
+2025-01-10,04:33:53,03:02:34,44.1,24.25,mobile_payment,yellow,Washington Heights North,residential,Kips Bay,entertainment_district
+2024-08-14,16:28:19,00:01:21,81.82,62.67,mobile_payment,green,Bay Ridge,entertainment_district,Jackson Heights,train_station

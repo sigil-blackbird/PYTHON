@@ -1,10 +1,9 @@
-
 from datetime import date, datetime, timedelta
 import random
 import pandas as pd
 import numpy as np
-from projects.synthetic_data_generator.conf.proj_conf import timer
-from projects.synthetic_data_generator.conf.output_file import out_file
+from synthetic_data_generator.conf.proj_conf import timer
+from synthetic_data_generator.conf.output_file import out_file
 
 """
 Constants:

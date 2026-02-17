@@ -1,5 +1,5 @@
 import os
-from etl_csv_file_to_oracle.conf.proj_conf import get_output_path
+from synthetic_data_generator.conf.proj_conf import get_output_path
 
 def get_output_file(output_filename):
     """

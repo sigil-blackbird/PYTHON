@@ -1,6 +1,0 @@
-pick_up_date,pick_up_time,drop_off_time,trip_distance,trip_fare,payment_method,cab_color,pickup_location,pickup_zone,dropoff_location,dropoff_zone
-2023-06-30,07:24:30,09:28:19,36.63,43.41,credit_card,yellow,Lower East Side,entertainment_district,Inwood,residential
-2023-03-02,19:49:26,20:22:28,14.97,67.93,Venmo,green,Greenwich Village North,entertainment_district,North Corona,residential
-2025-02-14,01:20:44,18:38:10,19.51,66.76,Venmo,white,Downtown Brooklyn/MetroTech,business_district,Williamsburg (North Side),entertainment_district
-2024-07-28,14:14:00,07:02:17,34.0,17.76,credit_card,white,Hudson Sq,entertainment_district,Bedford Park,business_district
-2024-04-29,05:22:09,14:27:47,56.33,17.99,credit_card,green,Steinway,business_district,South Williamsburg,train_station

@@ -3,7 +3,7 @@ import random
 import pandas as pd
 import numpy as np
 from synthetic_data_generator.conf.proj_conf import timer
-from synthetic_data_generator.conf.output_file import out_file
+from synthetic_data_generator.conf.output_file import out_file_csv, out_file_parquet
 
 """
 Constants:
@@ -28,7 +28,7 @@ def trip_time():
     return random_time
 
 @timer
-def trip_statistics_data(size):
+def trip_statistics_data_csv(size):
     """
     Generates a CSV file containing random taxi trip statistics data.
     
@@ -71,7 +71,22 @@ def trip_statistics_data(size):
     df['pickup_zone'] = np.random.choice(['airport', 'business_district', 'entertainment_district', 'residential', 'train_station'], size=size)
     df['dropoff_location'] = np.random.choice(suburbs, size=size)
     df['dropoff_zone'] = np.random.choice(['airport', 'business_district', 'entertainment_district', 'residential', 'train_station'], size=size)
-    df.to_csv((out_file), index=False)
-    return "Data generation complete. CSV file created at: " + out_file +" with " + str(size) + " records."
+    df.to_csv((out_file_csv), index=False)
+    return "Data generation complete. CSV file created at: " + out_file_csv +" with " + str(size) + " records."
 
-print(trip_statistics_data(5))
+@timer
+def trip_statistics_data_parquet(size):
+    df = pd.DataFrame()
+    df['pick_up_date'] = np.random.choice(pd.date_range(start=date(2023, 1, 1), end=date(2025, 12, 31)), size=size)
+    df['pick_up_time'] = [trip_time() for _ in range(size)]
+    df['drop_off_time'] = [trip_time() for _ in range(size)]
+    df['trip_distance'] = np.round(np.random.uniform(low=0.1, high=100.0, size=size), 2)
+    df['trip_fare'] = np.round(np.random.uniform(low=10.0, high=100.0, size=size), 2)
+    df['payment_method'] = np.random.choice(['cash', 'debit_card', 'mobile_payment', 'credit_card', 'transit_card', 'Venmo'], size=size)
+    df['cab_color'] = np.random.choice(['yellow', 'green', 'black', 'white', 'blue'], size=size)
+    df['pickup_location'] = np.random.choice(suburbs, size=size)
+    df['pickup_zone'] = np.random.choice(['airport', 'business_district', 'entertainment_district', 'residential', 'train_station'], size=size)
+    df['dropoff_location'] = np.random.choice(suburbs, size=size)
+    df['dropoff_zone'] = np.random.choice(['airport', 'business_district', 'entertainment_district', 'residential', 'train_station'], size=size)
+    df.to_parquet(out_file_parquet, index=False)
+    return "Data generation complete. Parquet file created at: " + out_file_parquet +" with " + str(size) + " records."

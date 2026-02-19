@@ -76,6 +76,39 @@ def trip_statistics_data_csv(size):
 
 @timer
 def trip_statistics_data_parquet(size):
+    """
+    Generate synthetic trip statistics data and save to a Parquet file.
+    
+    This function creates a pandas DataFrame with randomly generated taxi trip data
+    including pickup/dropoff information, times, distances, fares, and payment methods.
+    The generated data is written to a Parquet file for efficient storage and retrieval.
+    
+    Parameters
+    ----------
+    size : int
+        The number of synthetic trip records to generate.
+    
+    Returns
+    -------
+    str
+        A completion message indicating the Parquet file location and number of records created.
+    
+    Notes
+    -----
+    - Pickup dates are randomly selected between January 1, 2023 and December 31, 2025.
+    - Trip distances range from 0.1 to 100.0 miles, rounded to 2 decimal places.
+    - Trip fares range from $10.0 to $100.0, rounded to 2 decimal places.
+    - Pickup and dropoff locations are randomly selected from a predefined suburbs list.
+    - Zones include: airport, business_district, entertainment_district, residential, and train_station.
+    - Payment methods include: cash, debit_card, mobile_payment, credit_card, transit_card, and Venmo.
+    - Cab colors include: yellow, green, black, white, and blue.
+    
+    Examples
+    --------
+    >>> result = trip_statistics_data_parquet(1000)
+    >>> print(result)
+    Data generation complete. Parquet file created at: [path] with 1000 records.
+    """
     df = pd.DataFrame()
     df['pick_up_date'] = np.random.choice(pd.date_range(start=date(2023, 1, 1), end=date(2025, 12, 31)), size=size)
     df['pick_up_time'] = [trip_time() for _ in range(size)]
